@@ -41,4 +41,4 @@
 
 ## App Flutter
 
-- http//github.com/Frave07/Flutter-Social-App
+- https://github.com/Frave07/Flutter-Social-Media-App
