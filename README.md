@@ -10,9 +10,12 @@
 
 - Go to Folder Mysql where you will the script for the creation of Database and the stored procedures
 
-### Configure mail sending
+### Configure NodeMail
 
 - Go to the Lib folder in the nodemail.ts file. Enter Gmail address and password for sending mails when register.
+
+- [Less Secure Apps](https://myaccount.google.com/lesssecureapps)  = ON
+
 
 ### Nodejs
 

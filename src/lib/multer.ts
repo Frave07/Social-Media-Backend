@@ -6,7 +6,7 @@ import { v4 as uuid } from 'uuid';
 var storageCover = multer.diskStorage({
 
     destination: 'uploads/profile/cover',
-    filename: (req, file, cb) => {
+    filename: (_, file, cb) => {
         cb(null, uuid() + path.extname( file.originalname ));
     }
 });
