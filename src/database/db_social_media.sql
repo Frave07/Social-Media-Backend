@@ -169,29 +169,3 @@ CREATE TABLE messages
 	FOREIGN KEY(source_uid) REFERENCES users(person_uid),
 	FOREIGN KEY(target_uid) REFERENCES users(person_uid)
 );
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

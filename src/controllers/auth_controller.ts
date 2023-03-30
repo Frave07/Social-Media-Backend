@@ -5,7 +5,7 @@ import { SignIn } from "../interfaces/login.interface";
 import { connect } from '../database/connection';
 import { generateJsonWebToken } from '../lib/generate_jwt';
 import { IVerifyUser } from '../interfaces/userdb';
-import { sendEmailVerify } from '../lib/nodemail';
+// import { sendEmailVerify } from '../lib/nodemail';
 
 
 export const login = async ( req: Request, res: Response): Promise<Response> => {
@@ -98,7 +98,7 @@ const resendCodeEmail = async (email: string): Promise<void> => {
 
     await conn.query('UPDATE users SET token_temp = ? WHERE email = ?', [ randomNumber, email ]);
 
-    await sendEmailVerify('Codigo de verificación', email, `<h1> Social Frave </h1><hr> <b>${ randomNumber } </b>`);
+    // await sendEmailVerify('Codigo de verificación', email, `<h1> Social Frave </h1><hr> <b>${ randomNumber } </b>`);
 
     conn.end();
 

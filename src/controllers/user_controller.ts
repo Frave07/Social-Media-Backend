@@ -6,8 +6,6 @@ import { v4 as uuidv4 } from 'uuid';
 import { RowDataPacket } from 'mysql2';
 import { connect } from '../database/connection';
 import { IChangePassword, IUpdateProfile, User, INewFriend, IAcceptFollowerRequest } from '../interfaces/user.interface';
-import { sendEmailVerify } from '../lib/nodemail';
-
 
 export const createUser = async ( req: Request, res: Response ): Promise<Response> => {
 
@@ -33,7 +31,7 @@ export const createUser = async ( req: Request, res: Response ): Promise<Respons
         
         await conn.query(`CALL SP_REGISTER_USER(?,?,?,?,?,?,?);`, [ uuidv4(), fullname, username, email, pass, uuidv4(), randomNumber ]);
 
-        await sendEmailVerify('Codigo de verificación', email, `<h1> Social Frave </h1><hr> <b>${ randomNumber } </b>`);
+        // await sendEmailVerify('Codigo de verificación', email, `<h1> Social Frave </h1><hr> <b>${ randomNumber } </b>`);
 
         conn.end();
 

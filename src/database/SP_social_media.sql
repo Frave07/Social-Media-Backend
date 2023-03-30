@@ -10,7 +10,7 @@ CREATE PROCEDURE SP_REGISTER_USER(IN uidPerson VARCHAR(100), IN fullname VARCHAR
 BEGIN
 	INSERT INTO person(uid, fullname, image) VALUE (uidPerson, fullname, 'avatar-default.png');
 	
-	INSERT INTO users(uid, username, email, passwordd, person_uid, token_temp) VALUE (uidUser, username, email, pass, uidPerson, temp);
+	INSERT INTO users(uid, username, email, passwordd, person_uid, token_temp, email_verified) VALUE (uidUser, username, email, pass, uidPerson, temp, 1);
 END//
 
 
@@ -29,7 +29,7 @@ END//
 DELIMITER //
 CREATE PROCEDURE SP_GET_ALL_POSTS_HOME(IN ID VARCHAR(100))
 BEGIN
-	SELECT img.post_uid AS post_uid, pos.is_comment, pos.type_privacy, pos.created_at, pos.person_uid, ANY_VALUE(username) AS username, 
+	SELECT img.post_uid AS post_uid, pos.is_comment, pos.type_privacy, pos.created_at, pos.person_uid, username AS username, 
 	per.image AS avatar, GROUP_CONCAT( DISTINCT img.image ) images, 
 	(SELECT COUNT(co.post_uid) FROM comments co WHERE co.post_uid = pos.uid ) AS count_comment,
 	(SELECT COUNT(li.post_uid) FROM likes li WHERE li.post_uid = pos.uid ) AS count_likes,
@@ -262,26 +262,3 @@ END//
 
 /*---------------------------------------------------------------------------------------------------------------------------*/
 /*---------------------------------------------------------------------------------------------------------------------------*/
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
